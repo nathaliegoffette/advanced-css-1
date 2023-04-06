@@ -1,21 +1,3 @@
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
-html {
-  font-size: 62.5%;
-  /*the root font-size is defined in the html, so from nom the root front size is 10px, so 1rem is also 10px. just easy to convert*/
-  /* not in typography - just defined what 1rem is... */
-}
-
-body {
-  box-sizing: border-box;
-}
-
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -52,6 +34,24 @@ body {
     transform: translate(0);
   }
 }
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  /*the root font-size is defined in the html, so from nom the root front size is 10px, so 1rem is also 10px. just easy to convert*/
+  /* not in typography - just defined what 1rem is... */
+}
+
+body {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -201,6 +201,41 @@ body {
   transform: translateY(0);
 }
 
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 50rem;
+}
+.card__side {
+  color: white;
+  font-size: 2rem;
+  height: 50rem;
+  transition: all 0.8s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backface-visibility: hidden;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+}
+.card__side--front {
+  background-color: #fff;
+}
+.card__side--back {
+  transform: rotateY(180deg);
+}
+.card__side--back-1 {
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
+}
+.card:hover .card__side--front {
+  transform: rotateY(-180deg);
+}
+.card:hover .card__side--back {
+  transform: rotateY(0);
+}
+
 .composition {
   position: relative;
 }
@@ -241,6 +276,7 @@ body {
   text-align: center;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s;
 }
 .feature-box__icon {
   font-size: 6rem;
@@ -251,30 +287,9 @@ body {
   -webkit-background-clip: text;
   color: transparent;
 }
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+.feature-box:hover {
+  transform: translateY(-1.5rem) scale(1.03);
 }
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
-.header__logo {
-  height: 3.5rem;
-}
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
 .row {
   max-width: 114rem;
   margin: 0 auto;
@@ -313,6 +328,30 @@ body {
   width: calc(3 *((100% - 3 * 6rem)/4) + 2 * 6rem);
 }
 
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+.header__logo {
+  height: 3.5rem;
+}
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 .section-about {
   background-color: #f7f7f7;
   padding: 25rem 0;
@@ -323,6 +362,17 @@ body {
   padding: 25rem 0;
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/nat-4.jpg);
   background-size: cover;
+  transform: skewY(-7deg);
+  margin-top: -10rem;
+}
+.section-features > * {
+  transform: skewY(7deg);
+}
+
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 25rem 0 50rem 0;
+  margin-top: -10rem;
 }
 
 /*# sourceMappingURL=style.css.map */
