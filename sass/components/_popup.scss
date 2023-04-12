@@ -55,8 +55,7 @@
     &__img {
         display: block;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        
 
         @include respond(tab-port) {
             display: inline-block;
